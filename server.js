@@ -12,7 +12,7 @@ app.get("/", (req,res) => {
 app.get("/employees/random", (req,res) => {
   const min = 0;
   const max = employees.length;
-  const randomEmployee = Math.floor(Math.random() * (max - min) + 1);
+  const randomEmployee = Math.floor(Math.random() * (max - min));
   res.json(employees[randomEmployee]);
 })
 
