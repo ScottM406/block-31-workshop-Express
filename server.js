@@ -13,11 +13,13 @@ app.get("/employees/random", (req,res) => {
   const min = 0;
   const max = employees.length;
   const randomEmployee = Math.floor(Math.random() * (max - min));
-  res.json(employees[randomEmployee]);
+  res.json(employees[randomEmployee].name);
 })
 
 app.get("/employees", (req,res) => {
-  res.json(employees);
+  res.json(employees.map((employee) => {
+    return employee.name
+  }))
 })
 
 app.get("/employees/:id", (req,res) => {
@@ -25,7 +27,7 @@ app.get("/employees/:id", (req,res) => {
   if (id < 0 || id >= employees.length) {
     res.status(404).send("Employee doesn't exist");
   } else {
-    res.json(employees[id]);
+    res.json(employees[id].name);
   }
 })
 
